@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 
 const MESSAGE_CREATED = gql`
   subscription {
-    messageAdded {
+    messageCreated {
       id
       text
     }
@@ -16,10 +16,9 @@ export default class MessageElement extends React.Component {
         document: MESSAGE_CREATED,
         updateQuery: (prev, { subscriptionData }) => {
           if (!subscriptionData.data) return prev;
-  
           return {
-            messages: [
-              ...prev.messages,
+            allMessages: [
+              ...prev.allMessages,
               subscriptionData.data.messageCreated,
             ],
           };

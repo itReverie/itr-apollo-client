@@ -13,10 +13,10 @@ const GET_MESSAGES = gql`
   }
 `;
 
+
 const MessageList = () => (
     <Query query={GET_MESSAGES}>
       {({ data, loading, subscribeToMore }) => {
-        console.log();
         if (!data) {
           return null;
         }

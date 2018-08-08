@@ -12,9 +12,12 @@ class Message extends Component{
         this.state={message:''};
     }
 
+     //onSend=()=>this.props.createMessage(this.state.message);
+
     onSend=()=>{
         //we need to call the mutation creation
-        console.log('send:', this.state.message);
+        //console.log('send:', this.state.message);
+
         this.props.mutate({
             variables: { text: this.state.message }
           })
@@ -45,7 +48,7 @@ class Message extends Component{
     }
 }
 
-const cerateMessage = gql`
+const createMessage = gql`
  mutation createMessage($text: String!){
   	createMessage(text:$text){
     		id,
@@ -54,6 +57,13 @@ const cerateMessage = gql`
 }
 `;
 
-const NewEntryWithData = graphql(cerateMessage)(Message);
+// const NewEntryWithData = graphql(createMessage, {
+//     props: ({ mutate }) => ({
+//         createMessage: (text) => mutate({ variables: { text } }),
+//       }),
+// })(Message);
+
+const NewEntryWithData = graphql(createMessage)(Message);
+
 
 export default NewEntryWithData;
