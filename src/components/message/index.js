@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
-export default class Message extends Component{
+class Message extends Component{
 
     constructor(props){
         super(props);
@@ -11,7 +13,16 @@ export default class Message extends Component{
     }
 
     onSend=()=>{
+        //we need to call the mutation creation
         console.log('send:', this.state.message);
+        this.props.mutate({
+            variables: { text: this.state.message }
+          })
+            .then(({ data }) => {
+              console.log('got data', data);
+            }).catch((error) => {
+              console.log('there was an error sending the query', error);
+            });
     }
 
     onTextChange=(event)=>{
@@ -33,3 +44,16 @@ export default class Message extends Component{
         </div>);
     }
 }
+
+const cerateMessage = gql`
+ mutation createMessage($text: String!){
+  	createMessage(text:$text){
+    		id,
+    		text	
+  }    	
+}
+`;
+
+const NewEntryWithData = graphql(cerateMessage)(Message);
+
+export default NewEntryWithData;
