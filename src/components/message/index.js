@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import send from '../../images/send.svg';
+import send from '../../images/send1.svg';
 import './message.css';
 
 class Message extends Component{
