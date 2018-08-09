@@ -1,0 +1,19 @@
+.more-icon{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.favorite-icon{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin: auto 15px auto 15px;
+}
+
+.message-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}

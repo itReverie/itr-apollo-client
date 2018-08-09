@@ -1,38 +1,22 @@
-import React from 'react';
-import gql from 'graphql-tag';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import more from '../../images/more.svg';
+import favorite from '../../images/star.svg';
+import './messageElement.style.css';
 
-const MESSAGE_CREATED = gql`
-  subscription {
-    messageCreated {
-      id
-      text
-    }
-  }
-`;
+export default class Message extends Component{
 
-export default class MessageElement extends React.Component {
-    componentDidMount() {
-      this.props.subscribeToMore({
-        document: MESSAGE_CREATED,
-        updateQuery: (prev, { subscriptionData }) => {
-          if (!subscriptionData.data) return prev;
-          return {
-            allMessages: [
-              ...prev.allMessages,
-              subscriptionData.data.messageCreated,
-            ],
-          };
-        },
-      });
+    render(){
+        return(<div className="message-container">
+            <div>{this.props.text}</div> 
+            <div className="moreActions-container">
+                <img src={favorite} className="favorite-icon"/>
+                <img src={more} className="more-icon" />
+            </div>
+        </div>);
     }
-  
-    render() {
-      return (
-        <ul>
-          {this.props.messages.map(message => (
-            <li key={message.id}>{message.text}</li>
-          ))}
-        </ul>
-      );
-    }
-  }
+}
+
+Message.propTypes={
+    text: PropTypes.string.isRequired
+}

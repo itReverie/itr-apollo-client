@@ -1,38 +1,39 @@
-
 import React from 'react';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import MessageElement from '../messageElement/';
+import Message from '../messageElement/';
 
-const GET_MESSAGES = gql`
-  query {
-    allMessages {
-      id,
+const MESSAGE_CREATED = gql`
+  subscription {
+    messageCreated {
+      id
       text
     }
   }
 `;
 
-
-const MessageList = () => (
-    <Query query={GET_MESSAGES}>
-      {({ data, loading, subscribeToMore }) => {
-        if (!data) {
-          return null;
-        }
+export default class MessageElement extends React.Component {
+    componentDidMount() {
+      this.props.subscribeToMore({
+        document: MESSAGE_CREATED,
+        updateQuery: (prev, { subscriptionData }) => {
+          if (!subscriptionData.data) return prev;
+          return {
+            allMessages: [
+              ...prev.allMessages,
+              subscriptionData.data.messageCreated,
+            ],
+          };
+        },
+      });
+    }
   
-        if (loading) {
-          return <span>Loading ...</span>;
-        }
-  
-        return (
-          <MessageElement
-            messages={data.allMessages}
-            subscribeToMore={subscribeToMore}
-          />
-        );
-      }}
-    </Query>
-  );
-
-  export default MessageList;
+    render() {
+      return (
+        <div>
+          {this.props.messages.map(message => (
+            <Message key={message.id} text={message.text} />
+          ))}
+        </div>
+      );
+    }
+  }
