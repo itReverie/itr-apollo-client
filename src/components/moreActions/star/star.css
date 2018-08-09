@@ -1,0 +1,8 @@
+.favorite-icon{
+    width: 15px;
+    max-width:15px;
+    height: 15px;
+    max-height:15px;
+    cursor: pointer;
+    margin: auto 15px auto 15px;
+}

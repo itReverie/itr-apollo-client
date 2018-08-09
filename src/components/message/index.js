@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import send from '../../images/send.svg';
+import './message.css';
 
 class Message extends Component{
 
@@ -25,7 +27,11 @@ class Message extends Component{
               console.log('got data', data);
             }).catch((error) => {
               console.log('there was an error sending the query', error);
-            });
+        });
+
+        //clean the text input
+        //this.setState({message:""});
+
     }
 
     onTextChange=(event)=>{
@@ -33,17 +39,20 @@ class Message extends Component{
     }
 
     handleKeyPress=(event)=>{
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && this.state.message.trim() !="" ) {
             this.onSend();
         }
     }
 
     render(){
-        return(<div>
-            <input type="text" 
+        return(<div className="message-text-container">
+            <textarea type="text"
+                   className="message-text-input"
                    onChange={this.onTextChange}
                    onKeyPress={this.handleKeyPress}/>
-            <button onClick={this.onSend}>Send</button>
+            <img className="send-button"
+                 src={send} 
+                 onClick={this.onSend} />
         </div>);
     }
 }

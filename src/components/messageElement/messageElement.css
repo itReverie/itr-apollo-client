@@ -1,0 +1,23 @@
+.more-icon{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.text-container{
+    text-align: -webkit-left;
+}
+.message-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 15px;
+    background-color: #efefef;
+}
+
+.moreActions-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-self: flex-start;
+}

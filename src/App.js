@@ -6,12 +6,15 @@ import Chat from '../src/components/chat/';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <header className="App-header">
-          <h1 className="App-title">Chat</h1>
+          <h1>Chat</h1>
+          <h3>Subscriptions with GraphQL</h3>
         </header>
-        <Chat />
+        
         <Message />
+        <Chat />
+       
       </div>
     );
   }

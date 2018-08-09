@@ -1,0 +1,19 @@
+.send-button{
+    width:35px;
+    height:35px;
+    margin: auto 10px auto 10px;
+    cursor: pointer;
+}
+
+.message-text-input{
+    width:100%;
+}
+
+.message-text-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fffcfd;
+}
