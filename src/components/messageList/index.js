@@ -19,8 +19,8 @@ export default class MessageElement extends React.Component {
           if (!subscriptionData.data) return prev;
           return {
             allMessages: [
-              ...prev.allMessages,
               subscriptionData.data.messageCreated,
+              ...prev.allMessages
             ],
           };
         },

@@ -30,7 +30,7 @@ class Message extends Component{
         });
 
         //clean the text input
-        //this.setState({message:""});
+        this.setState({message:""});
 
     }
 
@@ -46,7 +46,8 @@ class Message extends Component{
 
     render(){
         return(<div className="message-text-container">
-            <textarea type="text"
+            <input type="text"
+                   value={this.state.message}
                    className="message-text-input"
                    onChange={this.onTextChange}
                    onKeyPress={this.handleKeyPress}/>
