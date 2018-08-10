@@ -17,13 +17,16 @@ const GET_MESSAGES = gql`
 
 const MessageList = () => (
     <Query query={GET_MESSAGES}>
-      {({ data, loading, subscribeToMore }) => {
+      {({ data, loading, error, subscribeToMore }) => {
         if (!data) {
           return null;
         }
   
         if (loading) {
           return <span>Loading ...</span>;
+        }
+        if (error) { 
+          return <p>Error :(</p>;
         }
   
         return (

@@ -3,7 +3,7 @@ import './App.css';
 import Message from '../src/components/message/';
 import Chat from '../src/components/chat/';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -11,14 +11,10 @@ class App extends Component {
           <h1>Chat</h1>
           <h3>Subscriptions with GraphQL</h3>
         </header>
-        
         <Message />
         <Chat />
-       
-       
       </div>
     );
   }
 }
 
-export default App;

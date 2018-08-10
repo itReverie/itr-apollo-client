@@ -21,16 +21,6 @@ mutation updateMessage($id: Int!,
 `;
 export default class Message extends Component{
 
-    componentDidMount(){
-        //this.onFavorite= this.onFavorite.bind(this);
-    }
-
-    // onFavorite =()=>{
-    //     updateMessage({ variables: { id: this.props.message.id, 
-    //                                  text: this.props.message.text,
-    //                                  isFavorite: this.props.message.isFavorite } });
-    // }
-
     render(){
         return(
             <Mutation mutation={UPDATE_MESSAGE} key={this.props.message.id}>
@@ -39,11 +29,12 @@ export default class Message extends Component{
                     <div className="text-container">{this.props.message.text}</div> 
                     <div className="moreActions-container">
                         <Star active={this.props.message.isFavorite} 
-                             onClick={e => { updateMessage({ variables: { id: this.props.message.id, 
-                                                                          text: this.props.message.text,
-                                                                          isFavorite: !this.props.message.isFavorite } });
-                                            }}/>
-                        <img src={more} alt="more" className="more-icon" />
+                                       onClick={() => { updateMessage({ variables: { 
+                                                                        id: this.props.message.id, 
+                                                                        text: this.props.message.text,
+                                                                        isFavorite: !this.props.message.isFavorite } });
+                        }}/>
+                        <img src={more} alt="more" className="more-icon"/>
                     </div>
                 </div>
               )}
