@@ -1,18 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import Message from '../messageElement/';
+import MessageElement from '../messageElement/';
 
-const MESSAGE_CREATED = gql`
-  subscription {
-    messageCreated {
-      id
-      text
-      isFavorite
-    }
-  }
-`;
-
-export default class MessageElement extends React.Component {
+export default class MessageList extends React.Component {
     componentDidMount() {
       this.props.subscribeToMore({
         document: MESSAGE_CREATED,
@@ -29,13 +20,27 @@ export default class MessageElement extends React.Component {
     }
   
     render() {
-      
       return (
         <div>
           {this.props.messages.map(message => (
-            <Message key={message.id} message={message} />
+            <MessageElement key={message.id} 
+                            message={message}/>
           ))}
         </div>
       );
     }
   }
+
+MessageList.propTypes={
+                          messages: PropTypes.array.isRequired,
+                          subscribeToMore: PropTypes.func.isRequired
+                          }
+
+const MESSAGE_CREATED = gql`
+  subscription {
+    messageCreated {
+      id
+      text
+      isFavorite
+    }
+  }`;

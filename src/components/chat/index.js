@@ -2,7 +2,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import MessageElement from '../messageList/';
+import MessageList from '../messageList/';
 
 const GET_MESSAGES = gql`
   query {
@@ -14,23 +14,21 @@ const GET_MESSAGES = gql`
   }
 `;
 
-
-const MessageList = () => (
+const Chat = () => (
     <Query query={GET_MESSAGES}>
       {({ data, loading, error, subscribeToMore }) => {
         if (!data) {
           return null;
         }
-  
         if (loading) {
           return <span>Loading ...</span>;
         }
         if (error) { 
-          return <p>Error :(</p>;
+          return <p>Sorry! Something went wrong.</p>;
         }
   
         return (
-          <MessageElement
+          <MessageList
             messages={data.allMessages}
             subscribeToMore={subscribeToMore}
           />
@@ -39,4 +37,4 @@ const MessageList = () => (
     </Query>
   );
 
-  export default MessageList;
+  export default Chat;

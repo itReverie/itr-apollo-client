@@ -24,14 +24,13 @@ class Message extends Component{
             variables: { text: this.state.message }
           })
             .then(({ data }) => {
-              console.log('got data', data);
+              console.log('got data', data);//Add an animation
             }).catch((error) => {
               console.log('there was an error sending the query', error);
         });
 
         //clean the text input
         this.setState({message:""});
-
     }
 
     onTextChange=(event)=>{
