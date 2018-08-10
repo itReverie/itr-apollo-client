@@ -8,7 +8,8 @@ const GET_MESSAGES = gql`
   query {
     allMessages {
       id,
-      text
+      text, 
+      isFavorite
     }
   }
 `;

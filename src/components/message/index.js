@@ -39,7 +39,7 @@ class Message extends Component{
     }
 
     handleKeyPress=(event)=>{
-        if (event.key === 'Enter' && this.state.message.trim() !="" ) {
+        if (event.key === 'Enter' && this.state.message.trim() !=="" ) {
             this.onSend();
         }
     }
@@ -52,6 +52,7 @@ class Message extends Component{
                    onChange={this.onTextChange}
                    onKeyPress={this.handleKeyPress}/>
             <img className="send-button"
+                 alt="Send"
                  src={send} 
                  onClick={this.onSend} />
         </div>);

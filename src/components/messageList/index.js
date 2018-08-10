@@ -7,6 +7,7 @@ const MESSAGE_CREATED = gql`
     messageCreated {
       id
       text
+      isFavorite
     }
   }
 `;
@@ -28,10 +29,11 @@ export default class MessageElement extends React.Component {
     }
   
     render() {
+      
       return (
         <div>
           {this.props.messages.map(message => (
-            <Message key={message.id} text={message.text} />
+            <Message key={message.id} message={message} />
           ))}
         </div>
       );
