@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <div>
         <header className="App-header">
-          <h1>Chat</h1>
+          <h1>Messages</h1>
           <h3>Subscriptions with GraphQL</h3>
         </header>
         <Message />

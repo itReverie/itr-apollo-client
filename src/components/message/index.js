@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import send from '../../images/send1.svg';
+import send from '../../images/send.svg';
 import './message.css';
 
 class Message extends Component{
@@ -14,21 +14,11 @@ class Message extends Component{
         this.state={message:''};
     }
 
-     //onSend=()=>this.props.createMessage(this.state.message);
-
     onSend=()=>{
-        //we need to call the mutation creation
-        //console.log('send:', this.state.message);
-
+        //call the creation mutation
         this.props.mutate({
             variables: { text: this.state.message }
           })
-            .then(({ data }) => {
-              console.log('got data', data);//Add an animation
-            }).catch((error) => {
-              console.log('there was an error sending the query', error);
-        });
-
         //clean the text input
         this.setState({message:""});
     }
@@ -58,22 +48,12 @@ class Message extends Component{
     }
 }
 
-const createMessage = gql`
+const CREATE_MESSAGE = gql`
  mutation createMessage($text: String!){
   	createMessage(text:$text){
     		id,
     		text	
   }    	
-}
-`;
+}`;
 
-// const NewEntryWithData = graphql(createMessage, {
-//     props: ({ mutate }) => ({
-//         createMessage: (text) => mutate({ variables: { text } }),
-//       }),
-// })(Message);
-
-const NewEntryWithData = graphql(createMessage)(Message);
-
-
-export default NewEntryWithData;
+export default graphql(CREATE_MESSAGE)(Message);

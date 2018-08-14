@@ -1,7 +1,14 @@
 {
   "name": "itr-apollo-client",
   "version": "0.1.0",
-  "private": true,
+  "description": "Basic graphql apollo client with react.",
+  "keywords": [
+    "graphql",
+    "apollo-client",
+    "react-apollo",
+    "subscriptions"
+  ],
+  "author": "Brenda Jimenez",
   "dependencies": {
     "apollo-cache-inmemory": "^1.2.4",
     "apollo-client": "^2.3.4",

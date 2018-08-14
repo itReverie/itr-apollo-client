@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import MessageElement from '../messageElement/';
+import {Subscription } from 'react-apollo';
+
 
 export default class MessageList extends React.Component {
     componentDidMount() {
@@ -20,21 +22,23 @@ export default class MessageList extends React.Component {
     }
   
     render() {
-      return (
-        <div>
-          {this.props.messages.map(message => (
-            <MessageElement key={message.id} 
-                            message={message}/>
-          ))}
+      return (<div>
+          {this.props.messages.map(message => {
+          return (<div key={message.id}>
+            <MessageElement message={message}/>
+            <Subscription subscription={MESSAGE_UPDATED}
+                            variables={{ id: message.id }}>
+                            {() => {return null;}}
+              </Subscription>
+          </div>)
+          })}
         </div>
       );
     }
   }
 
-MessageList.propTypes={
-                          messages: PropTypes.array.isRequired,
-                          subscribeToMore: PropTypes.func.isRequired
-                          }
+MessageList.propTypes={ messages: PropTypes.array.isRequired,
+                        subscribeToMore: PropTypes.func.isRequired};
 
 const MESSAGE_CREATED = gql`
   subscription {
@@ -44,3 +48,12 @@ const MESSAGE_CREATED = gql`
       isFavorite
     }
   }`;
+const MESSAGE_UPDATED = gql`
+subscription messageUpdated($id: Int!){
+                messageUpdated(id:$id)
+		        { 
+                    id
+    	            text
+                    isFavorite
+                }
+}`;

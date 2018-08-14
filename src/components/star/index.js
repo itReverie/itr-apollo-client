@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './star.css';
-import starActive from '../../../images/starActive.svg';
-import starInactive from '../../../images/starInactive.svg';
+import starActive from '../../images/starActive.svg';
+import starInactive from '../../images/starInactive.svg';
 
 export default class Star extends Component{
 
