@@ -9,3 +9,5 @@ In this repo you will find and example about how to create subscriptions with Ap
 The back-end implementation is in <a href="https://github.com/itReverie/itr-apollo-server" target="_blank">itr-apollo-server</a>.
 
 If you would like to see a full explanantion behind this repo. Have a look at this Blog Post
+
+

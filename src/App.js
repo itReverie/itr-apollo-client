@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Message from '../src/components/message/';
-import Chat from '../src/components/chat/';
+import MessageContainer from '../src/components/messagesContainer';
 
 export default class App extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class App extends Component {
           <h3>Subscriptions with GraphQL</h3>
         </header>
         <Message />
-        <Chat />
+        <MessageContainer />
       </div>
     );
   }
