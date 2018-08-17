@@ -10,4 +10,4 @@ The back-end implementation is in <a href="https://github.com/itReverie/itr-apol
 
 If you would like to see a full explanantion behind this repo. Have a look at this Blog Post
 
-<div align="center"><img src="./itr-subscriptions.gif"/></div>
+<div align="center"><img src="./itr-subscriptions.gif "/></div>
